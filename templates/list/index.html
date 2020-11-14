@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+	{% block content %}
+	<div class="card-title">
+		<h3 class="font-weight-bold">TODO LIST</h3>
+	</div>
+	<a href="{% url 'create-todo' %} "><button class="btn btn-block btn-primary text-light font-weight-bold">
+	Create</button></a>
+		<br>
+	<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Todo</th>
+      <th scope="col">Complete</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for todo in todo_list  %}
+  	<tr>
+      <th scope="row"> {{forloop.counter}} </th>
+      <td> {{todo.title}} </td>
+      <td> {{todo.complete}} </td>
+      <td>
+      	<a href="{% url 'update-todo' todo.id %}" class="btn btn-primary">Update</a>
+      	<a href="{% url 'delete-todo' todo.id %}" class="btn btn-danger">Delete</a>  	
+      </td>
+    </tr>
+  	{% endfor %}
+
+  </tbody>
+</table>
+
+	{% endblock content %}

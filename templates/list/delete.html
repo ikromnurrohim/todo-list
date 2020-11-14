@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="card-header">
+	<h3>Delete Todo</h3>
+	</div>
+	<div class="card-body">
+		<form method="POST">
+			{% csrf_token %}
+			<h3>Yakin mendelete {{obj}} ? </h3>
+			<input type="Submit" class="btn btn-danger">
+			<a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+		</form>
+	</div>
+{% endblock content %}
